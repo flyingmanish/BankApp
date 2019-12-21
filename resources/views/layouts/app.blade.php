@@ -12,6 +12,12 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .mandatory{
+            color: red;
+        }
+
+    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
