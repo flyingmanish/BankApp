@@ -1,13 +1,24 @@
 @extends("layouts.app")
+<style type="text/css">
+  .already_exists_error {
+    display: none;
+  }
+</style>
 
 @section("content")
 <h1>Admin Registration</h1>
+<ul class="errors" style="list-style-type: none;">
+</ul>
+<div>
+  <span class="alert alert-danger already_exists_error">
+    This user already exists!
+  </span>
+</div>
 <hr>
 <div class="container">
 	<div class="col-sm-5 col-sm-offset-2">
 		<h5><b class="mandatory">*</b> <b>Field Mandatory</b></h5>
-		<form action="{{ url('/admin_data_stored') }}" method="POST" enctype="multipart/form-data">
-		{{csrf_field()}}
+		<form id="donationform">
 		  <div class="form-group">
 		    <label for="full_name"><b class="mandatory">*</b> Full Name:</label>
 		    <input type="text" class="form-control" id="full_name" name="full_name">
@@ -113,4 +124,61 @@
 	</form>
 	</div>
 </div>
+<script type="text/javascript">
+  $(function() {
+    $("#donationform").on("submit", function(e) {
+      alert('ok')
+      e.preventDefault()
+      $.ajax({
+        url: '{{url('/admin_data_stored')}}',
+        method: 'POST',
+        data: new FormData(this),
+              headers:{
+                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
+               },   
+        processData: false,
+        contentType: false,
+        success: function(obj) {
+          // alert("success")
+          // console.log("response ala server varun")
+          console.log(obj)
+          console.log($.type(obj))
+
+          if ($.type(obj)=="object") {
+            ngo_id = obj["ngo_id"]
+            console.log("ngo id")
+            console.log(ngo_id)
+            window.setTimeout(function() {
+                window.location.href = '{{url('/')}}/'+ngo_id;
+            }, 1000);
+
+          }
+
+
+
+
+          if (obj=='This User already exists!') {
+              $(".already_exists_error").show()
+            // $(".errrors").append("<li class='alert alert-danger'>"+obj+"</li>")
+          }
+          // $(".alert-danger").remove()
+
+          $(".success_msg").html("<li class='alert alert-success'>Submitted successfully!</li>")
+          // alert('Submitted Successfully.')
+        },
+        error: function(obj) {
+          // alert("error")
+          console.log(obj.responseJSON.errors)
+          // $(".alert-danger").remove()
+          $.each(obj.responseJSON.errors, function(key, val) {
+            // alert(val)
+            $(".errors").append("<li class='alert alert-danger'>"+val+"</li>")
+            // console.log(val)
+          })
+          // alert("Server Error occured! PLease contact supprt team.")
+        }
+      })
+    })
+  })
+</script>
 @endsection

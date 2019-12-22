@@ -24,7 +24,7 @@ class AdminController extends Controller
             'full_name'=> 'required',
             'email'=> 'required|email',
             'alternate_email'=> 'email',
-            'mobile'=> 'required|numeric|digits:10',
+            'mobile_no'=> 'required|numeric|digits:10',
             'alternate_mobile'=> 'numeric|digits:10',
             'permanante_address'=> 'required',
             'correspondence_address'=> 'required',
@@ -35,7 +35,9 @@ class AdminController extends Controller
             'state'=> 'required',
             'city'=> 'required',
             'pin_code'=> 'required',
-            'confirm_password'=> 'required|same:password|min:6',
+            'confirm_pwd'=> 'required|same:password|min:6',
+            'image'=> 'required',
+            'sing'=> 'required',
         ]);
          // dd("khali ala");
 
@@ -65,6 +67,7 @@ class AdminController extends Controller
     	$data->pincode=$request->pin_code;
     	$data->correspondence_address=$request->correspondence_address;
         $data->permanent_address=$request->permanante_address;
+
         
 
 
