@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="col-sm-5 col-sm-offset-2">
 		<h5><b class="mandatory">*</b> <b>Field Mandatory</b></h5>
-		<form action="/admin_data_stored" method="POST">
+		<form action="{{ url('/admin_data_stored') }}" method="POST" enctype="multipart/form-data">
 		{{csrf_field()}}
 		  <div class="form-group">
 		    <label for="full_name"><b class="mandatory">*</b> Full Name:</label>
@@ -29,8 +29,8 @@
 		    <input type="email" class="form-control" id="alternate_email" name="alternate_email">
 		  </div>
 		  <div class="form-group">
-		    <label for="addhar_card"><b class="mandatory">*</b> Addhar card number:</label>
-		    <input type="number" class="form-control" id="addhar_card" name="addhar_card">
+		    <label for="aadhar_card"><b class="mandatory">*</b> Aadhar card number:</label>
+		    <input type="number" class="form-control" id="aadhar_card" name="aadhar_card">
 		  </div>
 		  <div class="form-group">
 		    <label for="pan_card"><b class="mandatory">*</b> Pan card number:</label>
