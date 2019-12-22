@@ -15,9 +15,10 @@ class CreateAdminUsersTable extends Migration
     {
         Schema::create('admin_users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('u_id');
+            // $table->integer('u_id');
             $table->string('mobile');
             $table->string('alternate_mobile');
+            $table->string('email');
             $table->string('alternate_email');
             $table->string('aadhar_card');
             $table->string('pan_card');

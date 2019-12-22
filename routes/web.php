@@ -19,3 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin_register', 'AdminController@index');
+Route::post('/admin_data_stored', 'AdminController@stored');

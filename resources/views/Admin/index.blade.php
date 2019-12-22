@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="col-sm-5 col-sm-offset-2">
 		<h5><b class="mandatory">*</b> <b>Field Mandatory</b></h5>
-		<form action="/action_page.php">
+		<form action="/admin_data_stored" method="POST">
 		{{csrf_field()}}
 		  <div class="form-group">
 		    <label for="full_name"><b class="mandatory">*</b> Full Name:</label>
@@ -45,44 +45,38 @@
 		  </div>
 
 		  <div class="dropdown">
-		  	<label for="gender"><b class="mandatory">*</b> State:</label>
-			<button class="btn" type="button" data-toggle="dropdown">Dropdown Example
-			<span class="caret"></span></button>
-			<ul class="dropdown-menu">
-			<li><a href="#">Maharashtra</a></li>
-			<li><a href="#">Delhi</a></li>
-			<li><a href="#">Aasam</a></li>
-			<li><a href="#">Goa</a></li>
-			<li><a href="#">Gujrat</a></li>
-			<li><a href="#">Rajastan</a></li>
-			<li><a href="#"></a></li>
-			</ul>
-		  </div><br>
-
-			<div class="dropdown">
-				<label for="gender"><b class="mandatory">*</b> City:</label>
-				<button class="btn" type="button" data-toggle="dropdown">Dropdown Example
-				<span class="caret"></span></button>
-				<ul class="dropdown-menu">
-				<li><a href="#">Mumbai</a></li>
-				<li><a href="#">Pune</a></li>
-				<li><a href="#">nashik</a></li>
-				<li><a href="#">Thane</a></li>
-				<li><a href="#">Dombivali</a></li>
-				<li><a href="#">kalyan</a></li>
-				</ul>
-			</div><br>
+		  	<label><b class="mandatory">*</b> State:</label>
+			<select id="my-dropdown" name="state">
+				<option value="0">Please Select</option>
+				<option value="Delhi">Delhi</option>
+				<option value="Aasam">Aasam</option>
+				<option value="Goa">Goa</option>
+				<option value="Gujrat">Gujrat</option>
+				<option value="Rajastan">Rajastan</option>
+			</select>
+		</div>
+		<div class="dropdown">
+			<label><b class="mandatory">*</b> City:</label>
+			<select id="my-dropdown" name="city">
+				<option value="0">Please Select</option>
+				<option value="Mumbai">Mumbai</option>
+				<option value="Pune">Pune</option>
+				<option value="nashik">nashik</option>
+				<option value="Thane">Thane</option>
+				<option value="Dombivali">Dombivali</option>
+			</select>
+		</div>
 			<div class="form-group">
 				<label for="pin_code"><b class="mandatory">*</b> Pin Code</label>
 				<input type="number" name="pin_code">
 			</div>
 			<div class="form-group">
 				<label for="correspondence_address"><b class="mandatory">*</b> Correspondence Address:</label>
-				<textarea class="form-control" rows="5" id="correspondence_address"></textarea>
+				<textarea class="form-control" rows="5" id="correspondence_address" name="correspondence_address"></textarea>
 			</div>
 			<div class="form-group">
 				<label for="permanante_address"><b class="mandatory">*</b> Permanante Address:</label>
-				<textarea class="form-control" rows="5" id="permanante_address"></textarea>
+				<textarea class="form-control" rows="5" id="permanante_address" name="permanante_address"></textarea>
 			</div>
 			<div class="form-group">
 				<label class="form-check-label">
@@ -108,11 +102,11 @@
     		</div><br>
 		  <div class="form-group">
 		    <label for="pwd"><b class="mandatory">*</b> Password:</label>
-		    <input type="password" class="form-control" id="pwd">
+		    <input type="password" class="form-control" id="pwd" name="password">
 		  </div>
 		  <div class="form-group">
 		    <label for="pwd"><b class="mandatory">*</b> Confirm Password:</label>
-		    <input type="password" class="form-control" id="confirm_pwd">
+		    <input type="password" class="form-control" id="confirm_pwd" name="confirm_pwd">
 		  </div>
 		  
 		  <button type="submit" class="btn btn-success">Submit</button>
