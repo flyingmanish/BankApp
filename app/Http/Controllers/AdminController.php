@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\admin_users;
+use App\admin_user;
 
 class AdminController extends Controller
 {
@@ -13,7 +13,7 @@ class AdminController extends Controller
     }
     public function stored(Request $request){
     	// dd($request->all());
-    	$data= new admin_users();
+    	$data= new admin_user();
     	// $data->u_id=$request->  ;
     	$data->mobile=$request->mobile_no;
     	$data->alternate_mobile=$request->alternate_no;
